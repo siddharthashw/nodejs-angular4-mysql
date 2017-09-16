@@ -1,1 +1,9 @@
-﻿<h3>Add</h3>
+﻿<div>
+    <div>
+        <label>First Name : </label><input type="text" #firstname="ngModel" [(ngModel)]="user.firstname" [ngModelOptions]="{standalone: true}" required />
+    </div>
+    <div>
+        <label>Last Name : </label><input type="text" #lastname="ngModel" [(ngModel)]="user.lastname" [ngModelOptions]="{standalone: true}" required />
+    </div>
+    <button (click)="saveChanges()" [disabled]="!(firstname.valid && lastname.valid)">Save Changes</button>
+</div>

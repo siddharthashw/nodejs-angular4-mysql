@@ -1,11 +1,12 @@
 ﻿import { Http, Headers, RequestOptions, Response, URLSearchParams } from "@angular/http";
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
 import { User} from './user-model';
 
 @Injectable()
 export class UserService {
-    userUrl = "http://localhost:1515/api/user";
+    userUrl = "api/user/";
     constructor(private http: Http) {
     }
 
@@ -19,16 +20,16 @@ export class UserService {
     }
 
     deleteUserById(id: number) {
-        return this.http.delete(this.userUrl + id).map(res => res.json());
+        return this.http.delete(this.userUrl + id);
     }
 
     addUser(user: User) {
         let headers = new Headers({ 'Content-Type': 'application/json; charset=utf-8' });
-        return this.http.post(this.userUrl, JSON.stringify(user), { headers: headers }).map(res => res.json());
+        return this.http.post(this.userUrl, JSON.stringify(user), { headers: headers });
     }
 
     editUser(user: User) {
         let headers = new Headers({ 'Content-Type': 'application/json; charset=utf-8' });
-        return this.http.put(this.userUrl, JSON.stringify(user), { headers: headers }).map(res => res.json());
+        return this.http.put(this.userUrl, JSON.stringify(user), { headers: headers });
     }
 }
