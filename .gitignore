@@ -261,6 +261,5 @@ __pycache__/
 *.pyc
 
 *.js
-*/*.js
 *.js.map
 */*.js.map
