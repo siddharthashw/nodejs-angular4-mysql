@@ -1,0 +1,18 @@
+{
+  "name": "demo.mvc",
+  "version": "0.0.0",
+  "description": "Demo.MVC",
+  "main": "server.js",
+  "author": {
+    "name": "Siddhartha"
+  },
+  "dependencies": {
+    "@types/node": "8.0.28",
+    "body-parser": "^1.18.1",
+    "cors": "^2.8.4",
+    "ejs": "^1.0.0",
+    "express": "4.15.4",
+    "mysql": "2.13.0",
+    "sequelize": "3.30.3"
+  }
+}
