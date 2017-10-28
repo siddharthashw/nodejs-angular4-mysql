@@ -36,6 +36,18 @@
     <Content Include="angular-app\app\app.html">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="angular-app\app\department\add\department-add.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="angular-app\app\department\department.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="angular-app\app\department\edit\department-edit.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="angular-app\app\department\list\department-list.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="angular-app\app\user\add\add.html">
       <SubType>Code</SubType>
     </Content>
@@ -64,6 +76,30 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="angular-app\app\app.routes.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="angular-app\app\department\add\department-add.component.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="angular-app\app\department\department-model.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="angular-app\app\department\department.component.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="angular-app\app\department\department.module.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="angular-app\app\department\department.routes.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="angular-app\app\department\department.service.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="angular-app\app\department\edit\department-edit.component.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="angular-app\app\department\list\department-list.component.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="angular-app\app\main.ts">
@@ -97,6 +133,9 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="AppData\sql-connection.ts" />
+    <TypeScriptCompile Include="Controllers\department-controller.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Controllers\user-controller.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -110,6 +149,10 @@
   <ItemGroup>
     <Folder Include="angular-app\" />
     <Folder Include="angular-app\app\" />
+    <Folder Include="angular-app\app\department\" />
+    <Folder Include="angular-app\app\department\add\" />
+    <Folder Include="angular-app\app\department\edit\" />
+    <Folder Include="angular-app\app\department\list\" />
     <Folder Include="angular-app\app\shared\" />
     <Folder Include="angular-app\app\user\" />
     <Folder Include="angular-app\app\user\list\" />

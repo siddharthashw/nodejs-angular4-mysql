@@ -1,0 +1,6 @@
+﻿<div>
+    <div>
+        <label>Name : </label><input type="text" #name="ngModel" [(ngModel)]="department.name" [ngModelOptions]="{standalone: true}" required />
+    </div>
+    <button (click)="saveChanges()" [disabled]="!(name.valid)">Save Changes</button>
+</div>

@@ -23,8 +23,8 @@ export let DeletedUserById = (res: any, id: number) => {
 export let AddUser = (res: any, user: UserAc) => {
     let date = new Date();
     let dbDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-    connection.query('INSERT INTO nodemvc.users (firstName, lastName, createdAt, updatedAt)VALUES(?,?,?,?);',
-        [user.firstname, user.lastname, dbDate, dbDate], function (err, rows, field) {
+    connection.query('INSERT INTO nodemvc.users (firstName, lastName, createdAt, updatedAt, departmentId)VALUES(?,?,?,?,?);',
+        [user.firstname, user.lastname, dbDate, dbDate, user.departmentId], function (err, rows, field) {
         res.send();
     });
 }
@@ -32,8 +32,8 @@ export let AddUser = (res: any, user: UserAc) => {
 export let EditUser = (res: any, user: UserAc) => {
     let date = new Date();
     let dbDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-    connection.query('UPDATE nodemvc.users SET firstName=?, lastName=?, updatedAt=? WHERE Id = ?;',
-        [user.firstname, user.lastname, dbDate, user.id], function (err, rows, field) {
+    connection.query('UPDATE nodemvc.users SET firstName=?, lastName=?, departmentId=?, updatedAt=? WHERE Id = ?;',
+        [user.firstname, user.lastname, user.departmentId, dbDate, user.id], function (err, rows, field) {
         res.send();
     });
 }
