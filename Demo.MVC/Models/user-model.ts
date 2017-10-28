@@ -14,6 +14,7 @@ export class UserAc {
     id: number;
     firstname: string;
     lastname: string;
+    departmentId: string;
 }
 
 export class DepartmentAc {

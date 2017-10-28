@@ -18,13 +18,13 @@ export class UserListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getAllUser();
+        this.getAllDepartment();
     }
 
     getAllUser() {
         this.http.getAllUser().subscribe(res => {
             this.userList = new Array<User>();
-            this.userList = res;
+            //this.userList = res;
             for (var index = 0; index < res.length; index++) {
                 let user = new User();
                 let department = this.departmentList.filter(x => {
@@ -57,6 +57,7 @@ export class UserListComponent implements OnInit {
     getAllDepartment() {
         this.http.getAllDepartment().subscribe(res => {
             this.departmentList = res;
+            this.getAllUser();
         });
     }
 }
