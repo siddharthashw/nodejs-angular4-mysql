@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { UserModule } from './user/user.module';
 import { routing } from './app.routes';
+import { DepartmentModule } from './department/department.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -17,7 +18,8 @@ import { routing } from './app.routes';
         HttpModule,
         BrowserAnimationsModule,
         UserModule,
-        routing
+        routing,
+        DepartmentModule
     ],
     bootstrap: [AppComponent],
     providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],

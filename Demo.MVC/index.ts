@@ -16,8 +16,9 @@ app.engine('html', require('ejs').renderFile);
 // set body-parser to get json request
 app.use(BodyParser.urlencoded({ extended: false }));
 app.use(BodyParser.json());
-import { UserAc } from './Models/user-model';
+import { UserAc, DepartmentAc } from './Models/user-model';
 import * as Model from './Models/user-model';
+import * as DepartmentController from './Controllers/department-controller';
 
 Model.MigratedDatabase();
 
@@ -47,6 +48,23 @@ app.put('/api/user', function (request, response) {
     let body = request.body;
     let user: UserAc = JSON.parse(JSON.stringify(body));
     UserController.EditUser(response, user);
+});
+app.get('/api/department', function (request, response) {
+    DepartmentController.GetAllDepartment(response);
+});
+app.get('/api/department/:id', function (request, response) {
+    let id = +request.params.id;
+    DepartmentController.GetDepartmentById(response, id);
+});
+app.post('/api/department', function (request, response) {
+    let body = request.body;
+    let department: DepartmentAc = JSON.parse(JSON.stringify(body));
+    DepartmentController.AddDepartment(response, department);
+});
+app.put('/api/department', function (request, response) {
+    let body = request.body;
+    let department: DepartmentAc = JSON.parse(JSON.stringify(body));
+    DepartmentController.EditDepartment(response, department);
 });
 
 app.listen(port);

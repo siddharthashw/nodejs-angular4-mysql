@@ -1,4 +1,5 @@
-﻿<button (click)="addUser()">Add User</button>
+﻿<button (click)="addUser()" *ngIf="departmentList.length !== 0">Add User</button>
+<div *ngIf="departmentList.length === 0"><p>Add Department to get user option</p></div>
 <div>
     <table>
         <tbody>
@@ -6,6 +7,7 @@
                 <th>Id</th>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <th>Department Name</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -13,6 +15,7 @@
                 <th>{{user.id}}</th>
                 <th>{{user.firstname}}</th>
                 <th>{{user.lastname}}</th>
+                <th>{{user.departmentName}}</th>
                 <th><button (click)="editUser(user.id)">Edit</button></th>
                 <th><button (click)="deleteUser(user.id)">Delete</button></th>
             </tr>

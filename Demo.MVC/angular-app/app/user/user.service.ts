@@ -7,12 +7,12 @@ import { User} from './user-model';
 @Injectable()
 export class UserService {
     userUrl = "api/user/";
+    departmentUrl = "api/department/";
     constructor(private http: Http) {
     }
 
     getAllUser() {
-        let headers = new Headers({ 'Access-Control-Allow-Origin': '*' });
-        return this.http.get(this.userUrl, { headers: headers }).map(res => res.json());
+        return this.http.get(this.userUrl).map(res => res.json());
     }
 
     getUserById(id: number) {
@@ -31,5 +31,9 @@ export class UserService {
     editUser(user: User) {
         let headers = new Headers({ 'Content-Type': 'application/json; charset=utf-8' });
         return this.http.put(this.userUrl, JSON.stringify(user), { headers: headers });
+    }
+
+    getAllDepartment() {
+        return this.http.get(this.departmentUrl).map(res => res.json());
     }
 }

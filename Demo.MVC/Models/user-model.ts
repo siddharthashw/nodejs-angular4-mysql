@@ -16,6 +16,23 @@ export class UserAc {
     lastname: string;
 }
 
+export class DepartmentAc {
+    id: number;
+    name: string;
+}
+
+const Department = sequelize.define('department', {
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
+});
+
 const User = sequelize.define('user', {
     id: {
         type: Sequelize.INTEGER,
@@ -29,9 +46,20 @@ const User = sequelize.define('user', {
     lastname: {
         type: Sequelize.STRING,
         allowNull: false,
+    },
+    departmentId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+            // This is a reference to another model
+            model: Department,
+            // This is the column name of the referenced model
+            key: 'id'
+        }
     }
 });
 
 export let MigratedDatabase = () => {
+    Department.sync();
     User.sync();
 }
