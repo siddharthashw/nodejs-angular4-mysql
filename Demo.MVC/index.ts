@@ -16,7 +16,10 @@ app.engine('html', require('ejs').renderFile);
 // set body-parser to get json request
 app.use(BodyParser.urlencoded({ extended: false }));
 app.use(BodyParser.json());
-import { User } from './Models/user-model';
+import { UserAc } from './Models/user-model';
+import * as Model from './Models/user-model';
+
+Model.MigratedDatabase();
 
 app.get('/', function (request, response) {
     response.send("<b>Hello World !!</b>");
@@ -37,12 +40,12 @@ app.delete('/api/user/:id', function (request, response) {
 });
 app.post('/api/user', function (request, response) {
     let body = request.body;
-    let user: User = JSON.parse(JSON.stringify(body));
+    let user: UserAc = JSON.parse(JSON.stringify(body));
     UserController.AddUser(response, user);
 });
 app.put('/api/user', function (request, response) {
     let body = request.body;
-    let user: User = JSON.parse(JSON.stringify(body));
+    let user: UserAc = JSON.parse(JSON.stringify(body));
     UserController.EditUser(response, user);
 });
 
