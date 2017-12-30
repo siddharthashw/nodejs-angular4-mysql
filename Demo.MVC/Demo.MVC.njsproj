@@ -142,9 +142,13 @@
     <TypeScriptCompile Include="index.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Models\department-model.ts" />
     <TypeScriptCompile Include="Models\user-model.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Repository\department.repository.ts" />
+    <TypeScriptCompile Include="Repository\repository.ts" />
+    <TypeScriptCompile Include="Repository\user.repository.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="angular-app\" />
@@ -161,6 +165,7 @@
     <Folder Include="AppData\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="Repository\" />
     <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>

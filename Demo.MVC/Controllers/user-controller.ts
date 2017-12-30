@@ -1,39 +1,46 @@
-﻿import * as SqlConnection from '../AppData/sql-connection';
-var connection = SqlConnection.Connection();
-import { UserAc } from '../Models/user-model';
+﻿import { UserAc } from '../Models/user-model';
+import * as UserRepository from '../Repository/user.repository';
 
 export let GetAllUser = (res: any) => {
-    connection.query('SELECT * FROM nodemvc.users;', function (err, rows, field) {
-        res.send(rows);
+    UserRepository.GetAllUser().then(user => {
+        let list = new Array<any>();
+        for (var i = 0; i < user.length; i++) {
+            list.push(user[i].dataValues);
+        }
+        res.send(list);
     });
 }
 
 export let GetUserById = (res: any, id: number) => {
-    connection.query('SELECT * FROM nodemvc.users WHERE Id = ?;', [id], function (err, rows, field) {
-        res.send(rows[0]);
+    UserRepository.GetUserById(id).then(user => {
+        res.send(user.dataValues);
     });
 }
 
 export let DeletedUserById = (res: any, id: number) => {
-    connection.query('DELETE FROM nodemvc.users WHERE id = ?;', [id], function (err, rows, field) {
+    UserRepository.DeleteUserById(id).then(user => {
         res.send();
     });
 }
 
 export let AddUser = (res: any, user: UserAc) => {
-    let date = new Date();
-    let dbDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-    connection.query('INSERT INTO nodemvc.users (firstName, lastName, createdAt, updatedAt, departmentId)VALUES(?,?,?,?,?);',
-        [user.firstname, user.lastname, dbDate, dbDate, user.departmentId], function (err, rows, field) {
+    let data = {
+        firstname: user.firstname,
+        lastname: user.lastname,
+        departmentId: user.departmentId
+    }
+    UserRepository.InsertUser(data).then(dbUser => {
         res.send();
     });
 }
 
 export let EditUser = (res: any, user: UserAc) => {
-    let date = new Date();
-    let dbDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-    connection.query('UPDATE nodemvc.users SET firstName=?, lastName=?, departmentId=?, updatedAt=? WHERE Id = ?;',
-        [user.firstname, user.lastname, user.departmentId, dbDate, user.id], function (err, rows, field) {
+    let data = {
+        firstname: user.firstname,
+        lastname: user.lastname,
+        departmentId: user.departmentId
+    }
+    UserRepository.UpdateUser(data, { id: user.id }).then(dbUser => {
         res.send();
     });
 }

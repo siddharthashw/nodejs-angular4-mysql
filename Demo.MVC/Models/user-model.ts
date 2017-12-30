@@ -1,14 +1,6 @@
-﻿import * as Sequelize from 'sequelize';
-const sequelize = new Sequelize('nodemvc', 'root', 'P@ssw0rd', {
-    host: 'localhost',
-    port: 3306,
-    dialect: 'mysql',
-    pool: {
-        max: 5,
-        min: 0,
-        idle: 10000
-    },
-});
+﻿import * as sql from '../AppData/sql-connection';
+import * as Sequelize from 'sequelize';
+import { Department } from './department-model';
 
 export class UserAc {
     id: number;
@@ -17,24 +9,7 @@ export class UserAc {
     departmentId: string;
 }
 
-export class DepartmentAc {
-    id: number;
-    name: string;
-}
-
-const Department = sequelize.define('department', {
-    id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-    },
-    name: {
-        type: Sequelize.STRING,
-        allowNull: false
-    }
-});
-
-const User = sequelize.define('user', {
+export const User = sql.sequelize.define('user', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -59,8 +34,3 @@ const User = sequelize.define('user', {
         }
     }
 });
-
-export let MigratedDatabase = () => {
-    Department.sync();
-    User.sync();
-}

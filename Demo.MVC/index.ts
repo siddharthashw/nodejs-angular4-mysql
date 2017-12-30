@@ -3,8 +3,6 @@ import * as SqlConnection from './AppData/sql-connection';
 var port = 1515;
 var app = express();
 import * as BodyParser from 'body-parser';
-var connection = SqlConnection.Connection();
-connection.connect();
 import * as UserController from './Controllers/user-controller';
 var path = require('path');
 app.use(express.static(path.join(__dirname, 'angular-app')));
@@ -16,11 +14,12 @@ app.engine('html', require('ejs').renderFile);
 // set body-parser to get json request
 app.use(BodyParser.urlencoded({ extended: false }));
 app.use(BodyParser.json());
-import { UserAc, DepartmentAc } from './Models/user-model';
-import * as Model from './Models/user-model';
+import { UserAc } from './Models/user-model';
+import { DepartmentAc } from './Models/department-model';
 import * as DepartmentController from './Controllers/department-controller';
+import * as Repository from './Repository/repository';
 
-Model.MigratedDatabase();
+Repository.MigratedDatabase();
 
 app.get('/', function (request, response) {
     response.send("<b>Hello World !!</b>");
